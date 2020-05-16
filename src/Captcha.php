@@ -178,6 +178,16 @@ class Captcha
     protected $fontsDirectory;
 
     /**
+     * @var bool
+     */
+    protected $debug;
+
+    /**
+     * @var string
+     */
+    protected $encode;
+
+    /**
      * Constructor
      *
      * @param Filesystem $files
@@ -196,7 +206,8 @@ class Captcha
         Session $session,
         Hasher $hasher,
         Str $str
-    ) {
+    )
+    {
         $this->files = $files;
         $this->config = $config;
         $this->imageManager = $imageManager;
@@ -280,11 +291,13 @@ class Captcha
         if ($this->blur) {
             $this->image->blur($this->blur);
         }
-
+        // support data url config and debug mode
+        $encode = empty($this->encode) ? 'data-url' : $this->encode;
         return $api ? [
             'sensitive' => $generator['sensitive'],
             'key' => $generator['key'],
-            'img' => $this->image->encode('data-url')->encoded
+            'img' => $this->image->encode($encode)->encoded,
+            'text' => $this->debug ? '' : $this->text,
         ] : $this->image->response('png', $this->quality);
     }
 
