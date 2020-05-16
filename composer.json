@@ -1,7 +1,7 @@
 {
 	"name": "imgk/captcha",
 	"type": "package",
-	"description": "Laravel 5 & 6 Captcha Package",
+	"description": "Laravel 5 & 6 & 7 Captcha Package",
 	"keywords": ["laravel6 Captcha", "laravel6 Security", "laravel6 Captcha", "laravel5 Security", "Captcha"],
 	"homepage": "https://github.com/WebGameLinux/laravel-cap",
 	"license": "MIT",
