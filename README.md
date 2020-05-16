@@ -6,13 +6,14 @@
 [![License](https://poser.pugx.org/mews/captcha/license.svg)](https://packagist.org/packages/mews/captcha)
 [![Total Downloads](https://poser.pugx.org/mews/captcha/downloads.svg)](https://packagist.org/packages/mews/captcha)
 
-A simple [Laravel 5/6/7](http://www.laravel.com/) service provider for including the [Captcha for Laravel](https://github.com/mewebstudio/captcha).
+A simple [Laravel 5/6/7](http://www.laravel.com/) service provider for including the [Captcha for Laravel](https://github.com/WebGameLinux/laravel-cap).
 
-for Laravel 4 [Captcha for Laravel Laravel 4](https://github.com/mewebstudio/captcha/tree/master-l4)
 
-# base on News\Captcha 
+# base on [News\Captcha](https://github.com/mewebstudio/captcha) 
 
-change ext-gd to ext-imagick 
+change ext-gd to ext-imagick ,new\captcha is use  php gd2 ext  
+
+imgk\captcha use php imagick ext 
 
 ## Preview
 ![Preview](https://image.ibb.co/kZxMLm/image.png)
