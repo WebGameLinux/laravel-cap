@@ -24,36 +24,6 @@ class CaptchaServiceProvider extends ServiceProvider
             __DIR__ . '/../config/captcha.php' => config_path('captcha.php')
         ], 'config');
 
-        // HTTP routing
-        if (strpos($this->app->version(), 'Lumen') !== false) {
-            /* @var Router $router */
-            $router = $this->app;
-            $router->get('captcha[/api/{config}]', 'Imgk\Captcha\LumenCaptchaController@getCaptchaApi');
-            $router->get('captcha[/{config}]', 'Imgk\Captcha\LumenCaptchaController@getCaptcha');
-        } else {
-            /* @var Router $router */
-            $router = $this->app['router'];
-            if ((double)$this->app->version() >= 5.2) {
-                $router->get('captcha/api/{config?}', '\Imgk\Captcha\CaptchaController@getCaptchaApi')->middleware('web');
-                $router->get('captcha/{config?}', '\Imgk\Captcha\CaptchaController@getCaptcha')->middleware('web');
-            } else {
-                $router->get('captcha/api/{config?}', '\Imgk\Captcha\CaptchaController@getCaptchaApi');
-                $router->get('captcha/{config?}', '\Imgk\Captcha\CaptchaController@getCaptcha');
-            }
-        }
-
-        /* @var Factory $validator */
-        $validator = $this->app['validator'];
-
-        // Validator extensions
-        $validator->extend('captcha', function ($attribute, $value, $parameters) {
-            return captcha_check($value);
-        });
-
-        // Validator extensions
-        $validator->extend('captcha_api', function ($attribute, $value, $parameters) {
-            return captcha_api_check($value, $parameters[0]);
-        });
     }
 
     /**
@@ -80,5 +50,21 @@ class CaptchaServiceProvider extends ServiceProvider
                 $app['Illuminate\Support\Str']
             );
         });
+        // 自动注册验证器
+        if ($this->app->config('captcha.validator', true)) {
+            /* @var Factory $validator */
+            $validator = $this->app['validator'];
+
+            // Validator extensions
+            $validator->extend('captcha', function ($attribute, $value, $parameters) {
+                return captcha_check($value);
+            });
+
+            // Validator extensions
+            $validator->extend('captcha_api', function ($attribute, $value, $parameters) {
+                return captcha_api_check($value, $parameters[0]);
+            });
+        }
+
     }
 }
