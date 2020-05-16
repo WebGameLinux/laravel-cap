@@ -1,5 +1,5 @@
 {
-	"name": "mews/captcha",
+	"name": "imgk/captcha",
 	"type": "package",
 	"description": "Laravel 5 & 6 Captcha Package",
 	"keywords": ["laravel6 Captcha", "laravel6 Security", "laravel6 Captcha", "laravel5 Security", "Captcha"],
