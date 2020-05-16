@@ -291,7 +291,7 @@ class Captcha
         if ($this->blur) {
             $this->image->blur($this->blur);
         }
-        implode();
+
         // support data url config and debug mode
         $encode = empty($this->encode) ? 'data-url' : $this->encode;
         return $api ? [
