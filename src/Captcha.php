@@ -291,13 +291,14 @@ class Captcha
         if ($this->blur) {
             $this->image->blur($this->blur);
         }
+        implode();
         // support data url config and debug mode
         $encode = empty($this->encode) ? 'data-url' : $this->encode;
         return $api ? [
             'sensitive' => $generator['sensitive'],
             'key' => $generator['key'],
             'img' => $this->image->encode($encode)->encoded,
-            'text' => $this->debug ? '' : $this->text,
+            'text' => $this->debug ? implode('', $this->text) : '',
         ] : $this->image->response('png', $this->quality);
     }
 
