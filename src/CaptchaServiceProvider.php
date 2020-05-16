@@ -51,7 +51,7 @@ class CaptchaServiceProvider extends ServiceProvider
             );
         });
         // 自动注册验证器
-        if ($this->app->config('captcha.validator', true)) {
+        if (config('captcha.validator', true)) {
             /* @var Factory $validator */
             $validator = $this->app['validator'];
 
