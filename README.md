@@ -42,7 +42,7 @@ composer require imgk/captcha
 
 Update your packages with ```composer update``` or install with ```composer install```.
 
-In Windows, you'll need to include the GD2 DLL `php_gd2.dll` in php.ini. And you also need include `php_fileinfo.dll` and `php_mbstring.dll` to fit the requirements of `mews/captcha`'s dependencies.
+In Windows, you'll need to include the Imagick DLL `php_imgick.dll` in php.ini. And you also need include `php_fileinfo.dll` and `php_mbstring.dll` to fit the requirements of `imgk/captcha`'s dependencies.
 
 
 
